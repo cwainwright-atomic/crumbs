@@ -8,4 +8,9 @@
 public struct RecurringOrderDTO {
     public let orderDetail: CobOrderDetailDTO
     public let user: UserDTO?
+    
+    public init(orderDetail: CobOrderDetailDTO, user: UserDTO? = nil) {
+        self.orderDetail = orderDetail
+        self.user = user
+    }
 }

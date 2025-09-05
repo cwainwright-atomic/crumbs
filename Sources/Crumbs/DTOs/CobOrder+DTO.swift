@@ -14,4 +14,13 @@ public struct CobOrderDTO {
     public let orderKind: CobOrderKind
     public let user: UserDTO?
     public let weekOrder: WeekOrderDTO?
+    
+    public init(id: UUID, createdAt: Date, orderDetail: CobOrderDetailDTO, orderKind: CobOrderKind, user: UserDTO? = nil, weekOrder: WeekOrderDTO? = nil) {
+        self.id = id
+        self.createdAt = createdAt
+        self.orderDetail = orderDetail
+        self.orderKind = orderKind
+        self.user = user
+        self.weekOrder = weekOrder
+    }
 }

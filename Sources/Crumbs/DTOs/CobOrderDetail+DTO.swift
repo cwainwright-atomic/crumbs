@@ -9,4 +9,10 @@ public struct CobOrderDetailDTO {
     public let filling: Filling
     public let bread: Bread
     public let sauce: Sauce
+    
+    public init(filling: Filling, bread: Bread, sauce: Sauce) {
+        self.filling = filling
+        self.bread = bread
+        self.sauce = sauce
+    }
 }

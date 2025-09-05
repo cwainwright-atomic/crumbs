@@ -8,5 +8,4 @@
 public struct RecurringOrderDTO {
     public let orderDetail: CobOrderDetailDTO
     public let user: UserDTO?
-    
 }

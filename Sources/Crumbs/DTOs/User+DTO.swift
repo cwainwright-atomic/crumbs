@@ -21,13 +21,11 @@ extension UserDTO : Codable, Sendable {}
 
 
 public struct UserTokenDTO {
-    public let id: UUID
     public let value: String
     public let expiry: Date
     public let user: UserDTO
     
-    public init(id: UUID, value: String, expiry: Date, user: UserDTO) {
-        self.id = id
+    public init(value: String, expiry: Date, user: UserDTO) {
         self.value = value
         self.expiry = expiry
         self.user = user

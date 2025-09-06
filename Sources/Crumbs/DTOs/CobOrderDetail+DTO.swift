@@ -5,7 +5,7 @@
 //  Created by Christopher Wainwright on 06/09/2025.
 //
 
-public struct CobOrderDetailDTO {
+public struct CobOrderDetailDTO : DTO {
     public let filling: Filling
     public let bread: Bread
     public let sauce: Sauce
@@ -16,5 +16,3 @@ public struct CobOrderDetailDTO {
         self.sauce = sauce
     }
 }
-
-extension CobOrderDetailDTO: Codable, Sendable {}

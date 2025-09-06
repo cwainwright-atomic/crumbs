@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct CobOrderDTO {
+public struct CobOrderDTO : Identifiable, DTO {
     public let id: UUID
     public let createdAt: Date
     public let orderDetail: CobOrderDetailDTO
@@ -24,5 +24,3 @@ public struct CobOrderDTO {
         self.weekOrder = weekOrder
     }
 }
-
-extension CobOrderDTO: Codable, Identifiable, Sendable {}

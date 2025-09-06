@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct UserDTO {
+public struct UserDTO : DTO {
     public let name: String
     public let email: String
     
@@ -17,10 +17,7 @@ public struct UserDTO {
     }
 }
 
-extension UserDTO : Codable, Sendable {}
-
-
-public struct UserTokenDTO {
+public struct UserTokenDTO : DTO {
     public let value: String
     public let expiry: Date
     public let user: UserDTO
@@ -31,5 +28,3 @@ public struct UserTokenDTO {
         self.user = user
     }
 }
-
-extension UserTokenDTO : Codable, Sendable {}

@@ -5,7 +5,7 @@
 //  Created by Christopher Wainwright on 31/08/2025.
 //
 
-public struct RecurringOrderDTO {
+public struct RecurringOrderDTO : DTO {
     public let orderDetail: CobOrderDetailDTO
     public let user: UserDTO?
     
@@ -14,5 +14,3 @@ public struct RecurringOrderDTO {
         self.user = user
     }
 }
-
-extension RecurringOrderDTO : Codable, Sendable {}

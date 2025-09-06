@@ -22,7 +22,7 @@ public struct WeekOrderDTO {
     public let year: Int
     public let orders: [CobOrderDTO]
     
-    public init(week: Int, year: Int, orders: [CobOrderDTO]) {
+    public init(week: Int, year: Int, orders: [CobOrderDTO] = []) {
         self.week = week
         self.year = year
         self.orders = orders

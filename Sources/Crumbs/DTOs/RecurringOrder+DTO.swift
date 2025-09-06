@@ -14,3 +14,5 @@ public struct RecurringOrderDTO {
         self.user = user
     }
 }
+
+extension RecurringOrderDTO : Codable, Sendable {}

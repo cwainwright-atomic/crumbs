@@ -14,3 +14,5 @@ public struct UserDTO {
         self.email = email
     }
 }
+
+extension UserDTO : Codable, Sendable {}

@@ -24,3 +24,5 @@ public struct CobOrderDTO {
         self.weekOrder = weekOrder
     }
 }
+
+extension CobOrderDTO: Codable, Identifiable, Sendable {}

@@ -16,3 +16,5 @@ public struct CobOrderDetailDTO {
         self.sauce = sauce
     }
 }
+
+extension CobOrderDetailDTO: Codable, Sendable {}

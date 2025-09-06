@@ -15,6 +15,8 @@ public struct WeekDTO {
     }
 }
 
+extension WeekDTO: Codable, Sendable {}
+
 public struct WeekOrderDTO {
     public let week: Int
     public let year: Int
@@ -26,3 +28,5 @@ public struct WeekOrderDTO {
         self.orders = orders
     }
 }
+
+extension WeekOrderDTO: Codable, Sendable {}

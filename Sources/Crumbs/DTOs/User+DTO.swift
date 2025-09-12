@@ -18,13 +18,26 @@ public struct UserDTO : DTO {
 }
 
 public struct UserTokenDTO : DTO {
-    public let value: String
-    public let expiry: Date
+    public let token: TokenDTO
     public let user: UserDTO
     
     public init(value: String, expiry: Date, user: UserDTO) {
+        self.token = TokenDTO(value: value, expiry: expiry)
+        self.user = user
+    }
+    
+    public init(token: TokenDTO, user: UserDTO) {
+        self.token = token
+        self.user = user
+    }
+}
+
+public struct TokenDTO : DTO {
+    public let value: String
+    public let expiry: Date
+    
+    public init(value: String, expiry: Date) {
         self.value = value
         self.expiry = expiry
-        self.user = user
     }
 }

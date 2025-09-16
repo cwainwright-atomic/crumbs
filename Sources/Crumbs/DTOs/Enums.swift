@@ -6,18 +6,20 @@
 //
 
 
-public enum Filling: String, DTO {
+public protocol DTOEnum: DTO, CaseIterable {}
+
+public enum Filling: String, DTOEnum {
     case bacon, sausage, egg, vegan_sausage
 }
 
-public enum Bread: String, DTO {
+public enum Bread: String, DTOEnum {
     case white, brown
 }
 
-public enum Sauce: String, DTO {
+public enum Sauce: String, DTOEnum {
     case red, brown
 }
 
-public enum CobOrderKind : String, DTO {
+public enum CobOrderKind : String, DTOEnum {
     case single, recurring
 }

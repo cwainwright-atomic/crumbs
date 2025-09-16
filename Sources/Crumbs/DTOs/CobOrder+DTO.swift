@@ -13,14 +13,14 @@ public struct CobOrderDTO : Identifiable, DTO {
     public let orderDetail: CobOrderDetailDTO
     public let orderKind: CobOrderKind
     public let user: UserDTO?
-    public let weekOrder: WeekOrderDTO?
+    public let week: WeekDTO?
     
-    public init(id: UUID, createdAt: Date, orderDetail: CobOrderDetailDTO, orderKind: CobOrderKind, user: UserDTO? = nil, weekOrder: WeekOrderDTO? = nil) {
+    public init(id: UUID, createdAt: Date, orderDetail: CobOrderDetailDTO, orderKind: CobOrderKind, user: UserDTO? = nil, week: WeekDTO? = nil) {
         self.id = id
         self.createdAt = createdAt
         self.orderDetail = orderDetail
         self.orderKind = orderKind
         self.user = user
-        self.weekOrder = weekOrder
+        self.week = week
     }
 }

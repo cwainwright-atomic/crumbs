@@ -15,6 +15,12 @@ public struct WeekDTO : DTO {
     }
 }
 
+extension WeekDTO : Comparable {
+    public static func < (lhs: WeekDTO, rhs: WeekDTO) -> Bool {
+        return (lhs.year < rhs.year) || (lhs.year == rhs.year && lhs.week < rhs.week)
+    }
+}
+
 public struct WeekOrderDTO : DTO {
     public let week: Int
     public let year: Int

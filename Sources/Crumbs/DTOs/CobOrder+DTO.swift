@@ -39,12 +39,13 @@ public struct CobOrderDTO : Identifiable, DTO {
     }
     
     public struct UserListItem: Identifiable, DTO {
+        public let id: UUID
         public let createdAt: Date
         public let orderDetail: CobOrderDetailDTO
         public let week: WeekDTO
-        public var id: Int { self.hashValue }
         
-        public init(createdAt: Date, orderDetail: CobOrderDetailDTO, week: WeekDTO) {
+        public init(id: UUID, createdAt: Date, orderDetail: CobOrderDetailDTO, week: WeekDTO) {
+            self.id = id
             self.createdAt = createdAt
             self.orderDetail = orderDetail
             self.week = week

@@ -20,10 +20,29 @@ public struct CobOrderDTO : Identifiable, DTO {
         self.updatedAt = updatedAt
         self.orderDetail = orderDetail
         self.orderKind = orderKind
+    
+    public struct AssociatedName: Identifiable, DTO {
+        public var id: UUID { order.id }
+        public var createdAt: Date { order.createdAt }
+        public var updatedAt: Date { order.updatedAt }
+        public var orderKind: CobOrderKind { order.orderKind }
+        public var orderDetail: CobOrderDetailDTO { order.orderDetail }
+        
+        public let name: String
+        public let order: CobOrderDTO
+        
+        public init(name: String, order: CobOrderDTO) {
+            self.name = name
+            self.order = order
+        }
     }
     
     public struct AssociatedUser: Identifiable, DTO {
         public var id: UUID { order.id }
+        public var createdAt: Date { order.createdAt }
+        public var updatedAt: Date { order.updatedAt }
+        public var orderKind: CobOrderKind { order.orderKind }
+        public var orderDetail: CobOrderDetailDTO { order.orderDetail }
         
         public let user: UserDTO
         public let order: CobOrderDTO

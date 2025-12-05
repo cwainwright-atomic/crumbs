@@ -33,7 +33,6 @@ public struct WeekDTO : DTO {
         public var id: Int { week.hashValue }
         
         public let week: WeekDTO
-//        public let order: CobOrderDTO?
         public let order: CobOrderVariantDTO?
         
         public init(week: WeekDTO, order: CobOrderVariantDTO?) {

@@ -11,15 +11,16 @@ public struct CobOrderDTO : Identifiable, DTO {
     public let id: UUID
     public let createdAt: Date
     public let updatedAt: Date
-    public let orderDetail: CobOrderDetailDTO
     public let orderKind: CobOrderKind
+    public let orderDetail: CobOrderDetailDTO
     
     public init(id: UUID, createdAt: Date, updatedAt: Date, orderDetail: CobOrderDetailDTO, orderKind: CobOrderKind) {
         self.id = id
         self.createdAt = createdAt
         self.updatedAt = updatedAt
-        self.orderDetail = orderDetail
         self.orderKind = orderKind
+        self.orderDetail = orderDetail
+    }
     
     public struct AssociatedName: Identifiable, DTO {
         public var id: UUID { order.id }

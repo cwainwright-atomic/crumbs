@@ -47,11 +47,17 @@ public struct WeekDTO : DTO {
     
     public struct WeeklyOrderDTO : DTO {
         public let week: WeekDTO
-        public let orders: [CobOrderDTO]
+        public let orders: [CobOrderDTO.AssociatedName]
         
+        @available(*, deprecated, renamed: "init(week:namedOrders:)", message: "WeeklyOrder now requires an associated username with each CobOrder. For compatibility, this initialiser auto-assigns UUID placeholders and will be removed in a future release.")
         public init(week: WeekDTO, orders: [CobOrderDTO] = []) {
             self.week = week
-            self.orders = orders
+            self.orders = orders.map { CobOrderDTO.AssociatedName(name: UUID().uuidString, order: $0) }
+        }
+
+        public init(week: WeekDTO, namedOrders: [CobOrderDTO.AssociatedName] = []) {
+            self.week = week
+            self.orders = namedOrders
         }
     }
 }

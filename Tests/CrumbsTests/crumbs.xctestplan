@@ -1,0 +1,24 @@
+{
+  "configurations" : [
+    {
+      "id" : "B25CF32F-15D3-4EE7-988C-089C4B80B1CF",
+      "name" : "Test Scheme Action",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+    "performanceAntipatternCheckerEnabled" : true
+  },
+  "testTargets" : [
+    {
+      "target" : {
+        "containerPath" : "container:",
+        "identifier" : "CrumbsTests",
+        "name" : "CrumbsTests"
+      }
+    }
+  ],
+  "version" : 1
+}

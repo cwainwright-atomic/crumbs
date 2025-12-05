@@ -1,5 +1,5 @@
 //
-//  User.swift
+//  User+DTO.swift
 //  CobWeb
 //
 //  Created by Christopher Wainwright on 31/08/2025.
@@ -17,6 +17,16 @@ public struct UserDTO : DTO {
     }
 }
 
+public struct TokenDTO : DTO {
+    public let value: String
+    public let expiry: Date
+    
+    public init(value: String, expiry: Date) {
+        self.value = value
+        self.expiry = expiry
+    }
+}
+
 public struct UserTokenDTO : DTO {
     public let token: TokenDTO
     public let user: UserDTO
@@ -29,15 +39,5 @@ public struct UserTokenDTO : DTO {
     public init(token: TokenDTO, user: UserDTO) {
         self.token = token
         self.user = user
-    }
-}
-
-public struct TokenDTO : DTO {
-    public let value: String
-    public let expiry: Date
-    
-    public init(value: String, expiry: Date) {
-        self.value = value
-        self.expiry = expiry
     }
 }

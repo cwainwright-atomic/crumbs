@@ -38,6 +38,10 @@ public struct CobOrderDTO : Identifiable, DTO {
         }
     }
     
+    public func withAssociatedName(_ name: String) -> AssociatedName {
+        .init(name: name, order: self)
+    }
+    
     public struct AssociatedUser: Identifiable, DTO {
         public var id: UUID { order.id }
         public var createdAt: Date { order.createdAt }

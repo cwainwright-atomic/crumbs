@@ -62,42 +62,70 @@ public struct CobOrderDTO : Identifiable, DTO {
         .init(user: user, order: self)
     }
 
-    public struct AssociatedWeek: Identifiable, DTO {
-        
-        public var id: Int { self.hashValue }
-        
-        public let week: WeekDTO
-        public let order: CobOrderVariantDTO
-        
-        public init(week: WeekDTO, order: CobOrderDTO) {
-            self.week = week
-            self.order = .single(order.orderDetail)
-        }
-        
-        public init(week: WeekDTO, recurringOrder: RecurringOrderDTO) {
-            self.week = week
-            self.order = .recurring(recurringOrder.orderDetail)
-        }
-        
-        public init(exceptionWeek: WeekDTO) {
-            self.week = exceptionWeek
-            self.order = .exception
-        }
-    }
-    
-    public func withAssociatedWeek(_ week: WeekDTO) -> AssociatedWeek {
+    public func withAssociatedWeek(_ week: WeekDTO) -> WeekOrderVariant {
         .init(week: week, order: self)
     }
 }
 
+@available(*, deprecated, renamed: "WeekOrderVariant", message: "Due to loose association to CobOrderDTO, AssociatedWeek has been moved and renamed to WeekOrderVariant")
+extension CobOrderDTO {
+    public typealias AssociatedWeek = WeekOrderVariant
+}
 
-public enum CobOrderVariantDTO : DTO { case single(CobOrderDetailDTO), recurring(CobOrderDetailDTO), exception }
+public struct WeekOrderVariant: Identifiable, DTO {
+    
+    public var id: Int { self.hashValue }
+    
+    public let week: WeekDTO
+    public let order: CobOrderVariantDTO
+    
+    public init(week: WeekDTO, order: CobOrderDTO) {
+        self.week = week
+        self.order = .single(order.id, order.orderDetail)
+    }
+    
+    public init(week: WeekDTO, recurringOrder: RecurringOrderDTO) {
+        self.week = week
+        self.order = .recurring(recurringOrder.id, recurringOrder.orderDetail)
+    }
+    
+    @available(*, deprecated, renamed: "init(id:exceptionWeek:)", message: "Please provide a UUID for the exception")
+    public init(exceptionWeek: WeekDTO) {
+        self.week = exceptionWeek
+        self.order = .exception(UUID())
+    }
+    
+    public init(id: UUID, exceptionWeek: WeekDTO) {
+        self.week = exceptionWeek
+        self.order = .exception(id)
+    }
+}
+
+public enum CobOrderVariantDTO : DTO { case single(UUID, CobOrderDetailDTO), recurring(UUID, CobOrderDetailDTO), exception(UUID)
+    
+    @available(*, deprecated, renamed: "single(_:_:)", message: "Please provide a UUID for the order")
+    public func single(_ detail: CobOrderDetailDTO) -> Self { .single(UUID(), detail) }
+    
+    @available(*, deprecated, renamed: "recurring(_:_:)", message: "Please provide a UUID for the order")
+    public func recurring(_ detail: CobOrderDetailDTO) -> Self { .recurring(UUID(), detail) }
+    
+    @available(*, deprecated, renamed: "exception(_:)", message: "Please provide a UUID for the order exception")
+    public var exception: Self { .exception(UUID()) }
+}
 
 extension CobOrderVariantDTO {
+    public var id: UUID {
+        switch self {
+        case .single(let id, _): id
+        case .recurring(let id, _): id
+        case .exception(let id): id
+        }
+    }
+    
     public var orderDetail: CobOrderDetailDTO? {
         switch self {
-        case .single(let detail): detail
-        case .recurring(let detail): detail
+        case .single(_, let detail): detail
+        case .recurring(_, let detail): detail
         case .exception: nil
         }
     }

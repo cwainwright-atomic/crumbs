@@ -19,4 +19,8 @@ public struct RecurringOrderExceptionDTO: DTO {
         self.user = user
         self.week = week
     }
+    
+    public func withAssociatedWeek(_ week: WeekDTO) -> WeekOrderVariant {
+        .init(id: self.id, exceptionWeek: week)
+    }
 }

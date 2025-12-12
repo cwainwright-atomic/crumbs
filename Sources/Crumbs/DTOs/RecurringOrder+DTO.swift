@@ -42,4 +42,8 @@ public struct RecurringOrderDTO : DTO {
     public func withAssociatedName(_ name: String) -> AssociatedName {
         .init(name: name, order: self)
     }
+    
+    public func withAssociatedWeek(_ week: WeekDTO) -> WeekOrderVariant {
+        .init(week: week, recurringOrder: self)
+    }
 }

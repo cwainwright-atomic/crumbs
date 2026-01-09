@@ -25,9 +25,3 @@ public enum Sauce: String, DTOEnum {
     
     public var id : Self { self }
 }
-
-public enum CobOrderKind : String, DTOEnum {
-    case single, recurring
-    
-    public var id : Self { self }
-}
